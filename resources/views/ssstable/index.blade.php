@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('page_title')
-    Salaries and wages
+    SSS Contributions
 @endsection
 
 
@@ -16,44 +16,53 @@
             <x-alert></x-alert>
             <div class="card">
                 <div class="card-header">
-                    <h5>List of Salaries and Wages</h5>
-                    <a href="{{route('wages.create')}}" class="btn btn-primary btn-sm"><i class="bi bi-plus-circle"></i> Create Salaries/Wages</a>
+                    <h5>List of SSS Contribution</h5>
+                    <a href="{{route('ssstables.create')}}" class="btn btn-primary btn-sm"><i class="bi bi-plus-circle"></i> Create SSS Contribution</a>
                 </div>
                 <div class="card-body">
                     <x-table>
                         <x-thead>
-                            <x-th hidden>UID</x-th>
-                            <x-th>Description</x-th>
-                            <x-th>Value</x-th>
-                            <x-th>Tax</x-th>
-                            <x-th>CompRate</x-th>
-                            <x-th>ExclAnnual</x-th>
+                            <x-th>Bracket</x-th>
+                            <x-th>From</x-th>
+                            <x-th>To</x-th>
+                            <x-th>Sal. Credit</x-th>
+                            <x-th>COSSS</x-th>
+                            <x-th>MCR</x-th>
+                            <x-th>EC</x-th>
+                            <x-th>EMPSSS</x-th>
+                            <x-th>EMPMCR</x-th>
+                            <x-th>Total</x-th>
                             <x-th>Edit</x-th>
                             <x-th>Delete</x-th>
                         </x-thead>
                         <x-tbody>
-                            @foreach($wages as $wage)
+                            @foreach($ssstables as $ssstable)
                                 <x-tr>
-                                    <x-td hidden>{{$wage->wd_uid}}</x-td>
-                                    <x-td>{{$wage->wd_desc}}</x-td>
-                                    <x-td>{{$wage->wd_value}}</x-td>
-                                    <x-td>{{$wage->istax}}</x-td>
-                                    <x-td>{{$wage->c_rate}}</x-td>
-                                    <x-td>{{$wage->ex_annual}}</x-td>
+
+                                    <x-td>{{$ssstable->bracket}}</x-td>
+                                    <x-td>{{$ssstable->rangel}}</x-td>
+                                    <x-td>{{$ssstable->rangeh}}</x-td>
+                                    <x-td>{{$ssstable->salcredit}}</x-td>
+                                    <x-td>{{$ssstable->cosss}}</x-td>
+                                    <x-td>{{$ssstable->comcr}}</x-td>
+                                    <x-td>{{$ssstable->coec}}</x-td>
+                                    <x-td>{{$ssstable->empsss}}</x-td>
+                                    <x-td>{{$ssstable->empmcr}}</x-td>
+                                    <x-td>{{$ssstable->totalcon}}</x-td>
                                     <x-td>
-                                        <a href="{{route('wages.edit', [$wage->wd_id])}}">
+                                        <a href="{{route('ssstables.edit', [$ssstable->ssscode])}}">
                                             <i class="bi bi-pencil"></i>
                                         </a>
                                     </x-td>
                                     <x-td>
-                                        <a href="" data-bs-toggle="modal" data-bs-target="#destroy{{$wage->wd_id}}">
+                                        <a href="" data-bs-toggle="modal" data-bs-target="#destroy{{$ssstable->ssscode}}">
                                             <i class="bi bi-trash"></i>
                                         </a>
 
-                                        <form action="{{route('wages.destroy', [$wage->wd_id])}}" method="POST">
+                                        <form action="{{route('ssstables.destroy', [$ssstable->ssscode])}}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <div class="modal fade" id="destroy{{$wage->wd_id}}">
+                                            <div class="modal fade" id="destroy{{$ssstable->ssscode}}">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -86,7 +95,7 @@
 
 @section('datatable')
     @php
-        $title = "Salaries and Wages";
+        $title = "Deductions";
         $columns = "1,2,3,4,5";
         $target = null;
         $orientation = "portrait";

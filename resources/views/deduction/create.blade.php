@@ -2,7 +2,7 @@
 
 
 @section('page_title')
-    Salaries and Wages Module
+    Deduction Module
 @endsection
 
 @section('header')
@@ -17,10 +17,10 @@
             <x-alert></x-alert>
             <div class="card mt-3">
                 <div class="card-header">
-                    Create Salaries and Wages
+                    Create Deduction
                 </div>
                 <div class="card-body">
-                    <form action="{{route('wages.store')}}" method="POST">
+                    <form action="{{route('deductions.store')}}" method="POST">
                         @csrf
                         <div class="row">
 
@@ -66,7 +66,7 @@
 
                             <div class="col-12 my-2">
                                 <x-btn>Save</x-btn>
-                                <a class="float-end" href="{{route('wages.index')}}">Back</a>
+                                <a class="float-end" href="{{route('deductions.index')}}">Back</a>
                             </div>
                         </div>
                     </form>

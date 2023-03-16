@@ -247,6 +247,20 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="{{route('deductions.index')}}">
+                        <i class="bi bi-circle"></i>
+                        <span>Deduction Reference</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{route('ssstables.index')}}">
+                        <i class="bi bi-circle"></i>
+                        <span>SSS Contribution Table</span>
+                    </a>
+                </li>
+
             </ul>
         </li><!-- End Charts Nav -->
 

@@ -2,16 +2,17 @@
 
 namespace App\Models;
 
-use App\Models\Scopes\WageScope;
+use App\Models\Scopes\DeductionScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Wage extends Model
+class Deduction extends Model
 {
     use HasFactory;
 
-    protected static function booted(){
-        static::addGlobalScope(new WageScope());
+    protected static function booted()
+    {
+        static::addGlobalScope(new DeductionScope());
     }
 
     protected $table = "wd_ref";
@@ -33,6 +34,4 @@ class Wage extends Model
         }
         return parent::setAttribute($key, $value);
     }
-
-
 }

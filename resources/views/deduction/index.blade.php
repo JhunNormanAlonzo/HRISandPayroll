@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('page_title')
-    Salaries and wages
+    Deductions
 @endsection
 
 
@@ -16,8 +16,8 @@
             <x-alert></x-alert>
             <div class="card">
                 <div class="card-header">
-                    <h5>List of Salaries and Wages</h5>
-                    <a href="{{route('wages.create')}}" class="btn btn-primary btn-sm"><i class="bi bi-plus-circle"></i> Create Salaries/Wages</a>
+                    <h5>List of Deductions</h5>
+                    <a href="{{route('deductions.create')}}" class="btn btn-primary btn-sm"><i class="bi bi-plus-circle"></i> Create Deduction</a>
                 </div>
                 <div class="card-body">
                     <x-table>
@@ -32,28 +32,28 @@
                             <x-th>Delete</x-th>
                         </x-thead>
                         <x-tbody>
-                            @foreach($wages as $wage)
+                            @foreach($deductions as $deduction)
                                 <x-tr>
-                                    <x-td hidden>{{$wage->wd_uid}}</x-td>
-                                    <x-td>{{$wage->wd_desc}}</x-td>
-                                    <x-td>{{$wage->wd_value}}</x-td>
-                                    <x-td>{{$wage->istax}}</x-td>
-                                    <x-td>{{$wage->c_rate}}</x-td>
-                                    <x-td>{{$wage->ex_annual}}</x-td>
+                                    <x-td hidden>{{$deduction->wd_uid}}</x-td>
+                                    <x-td>{{$deduction->wd_desc}}</x-td>
+                                    <x-td>{{$deduction->wd_value}}</x-td>
+                                    <x-td>{{$deduction->istax}}</x-td>
+                                    <x-td>{{$deduction->c_rate}}</x-td>
+                                    <x-td>{{$deduction->ex_annual}}</x-td>
                                     <x-td>
-                                        <a href="{{route('wages.edit', [$wage->wd_id])}}">
+                                        <a href="{{route('deductions.edit', [$deduction->wd_id])}}">
                                             <i class="bi bi-pencil"></i>
                                         </a>
                                     </x-td>
                                     <x-td>
-                                        <a href="" data-bs-toggle="modal" data-bs-target="#destroy{{$wage->wd_id}}">
+                                        <a href="" data-bs-toggle="modal" data-bs-target="#destroy{{$deduction->wd_id}}">
                                             <i class="bi bi-trash"></i>
                                         </a>
 
-                                        <form action="{{route('wages.destroy', [$wage->wd_id])}}" method="POST">
+                                        <form action="{{route('deductions.destroy', [$deduction->wd_id])}}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <div class="modal fade" id="destroy{{$wage->wd_id}}">
+                                            <div class="modal fade" id="destroy{{$deduction->wd_id}}">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -86,7 +86,7 @@
 
 @section('datatable')
     @php
-        $title = "Salaries and Wages";
+        $title = "Deductions";
         $columns = "1,2,3,4,5";
         $target = null;
         $orientation = "portrait";

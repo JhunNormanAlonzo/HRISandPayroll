@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\DeductionController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeLeaveController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\SectionController;
+use App\Http\Controllers\SssTableController;
 use App\Http\Controllers\WageController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,3 +44,5 @@ Route::resource('departments', DepartmentController::class);
 Route::resource('locations', LocationController::class);
 Route::resource('divisions', SectionController::class);
 Route::resource('wages', WageController::class);
+Route::resource('deductions', DeductionController::class);
+Route::resource('ssstables', SssTableController::class);

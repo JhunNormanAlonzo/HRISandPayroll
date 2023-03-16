@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Wage;
+use App\Models\Deduction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-
-class WageController extends Controller
+class DeductionController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $wages = Wage::all();
-        return view('wage.index', compact('wages'));
+        $deductions = Deduction::all();
+        return view('deduction.index', compact('deductions'));
     }
 
     /**
@@ -23,7 +22,7 @@ class WageController extends Controller
      */
     public function create()
     {
-        return view('wage.create');
+        return view('deduction.create');
     }
 
     /**
@@ -32,27 +31,27 @@ class WageController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-           'wd_desc' => 'required',
-           'wd_value' => 'required'
+            'wd_desc' => 'required',
+            'wd_value' => 'required'
         ]);
 
         $input = $request->all();
-        $input['iswage'] = 1;
+        $input['iswage'] = 0;
         $input['istax'] = $request->istax ?? 0;
         $input['c_rate'] = $request->c_rate ?? "";
         $input['ex_annual'] = $request->ex_annual ?? 0;
         $input['wd_id'] = "_".strtoupper(Str::random(9));
 
 
-        Wage::create($input);
+        Deduction::create($input);
 
-        return redirect()->route('wages.index')->with('message', 'Salary/Wage Created Successfully!');
+        return redirect()->route('deductions.index')->with('message', 'Deduction Created Successfully!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Wage $wage)
+    public function show(Deduction $deduction)
     {
         //
     }
@@ -60,15 +59,15 @@ class WageController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Wage $wage)
+    public function edit(Deduction $deduction)
     {
-        return view('wage.edit', compact('wage'));
+        return view('Deduction.edit', compact('deduction'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Wage $wage)
+    public function update(Request $request, Deduction $deduction)
     {
         $this->validate($request, [
             'wd_desc' => 'required',
@@ -79,16 +78,16 @@ class WageController extends Controller
         $input['c_rate'] = $request->c_rate ?? "";
         $input['ex_annual'] = $request->ex_annual ?? 0;
 
-        $wage->update($input);
-        return redirect()->route('wages.index')->with('message', 'Salary/Wage Updated Successfully!');
+        $deduction->update($input);
+        return redirect()->route('deductions.index')->with('message', 'Deduction Updated Successfully!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Wage $wage)
+    public function destroy(Deduction $deduction)
     {
-        $wage->delete();
-        return redirect()->route('wages.index')->with('message', 'Salary/Wage Deleted Successfully!');
+        $deduction->delete();
+        return redirect()->route('deductions.index')->with('message', 'Deduction Deleted Successfully!');
     }
 }
