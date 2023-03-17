@@ -57,7 +57,12 @@ class EmployeeLeaveController extends Controller
 
         $request->merge($new_data);
 
-        EmployeeLeave::create($request->all());
+        $input = $request->all();
+
+        $input['emp_ctrl'] = Employee::where('emp_name', $input['emp_ctrl'])->pluck('emp_ctrl')->first();
+
+
+        EmployeeLeave::create($input);
 
         return redirect()->back()->with('message', 'Leave Applied Successfully!');
 

@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PhTable extends Model
+class Spdate extends Model
 {
     use HasFactory;
 
-    protected $table = "ph_table";
+    protected $table = "sp_date";
 
-    protected $primaryKey = "phiccode";
+    protected $primaryKey = "sp_ctrl";
 
     protected $keyType = 'string';
 

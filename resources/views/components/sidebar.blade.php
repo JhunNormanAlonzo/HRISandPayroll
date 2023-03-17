@@ -261,6 +261,20 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="{{route('phtables.index')}}">
+                        <i class="bi bi-circle"></i>
+                        <span>PHIC Contribution Table</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{route('spdates.index')}}">
+                        <i class="bi bi-circle"></i>
+                        <span>Special Date</span>
+                    </a>
+                </li>
+
             </ul>
         </li><!-- End Charts Nav -->
 

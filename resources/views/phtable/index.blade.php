@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('page_title')
-    SSS Contributions
+    PHIC Contributions
 @endsection
 
 
@@ -16,8 +16,8 @@
             <x-alert></x-alert>
             <div class="card">
                 <div class="card-header">
-                    <h5>List of SSS Contribution</h5>
-                    <a href="{{route('ssstables.create')}}" class="btn btn-primary btn-sm"><i class="bi bi-plus-circle"></i> Create SSS Contribution</a>
+                    <h5>List of PHIC Contribution</h5>
+                    <a href="{{route('phtables.create')}}" class="btn btn-primary btn-sm"><i class="bi bi-plus-circle"></i> Create PHIC Contribution</a>
                 </div>
                 <div class="card-body">
                     <x-table>
@@ -25,44 +25,38 @@
                             <x-th>Bracket</x-th>
                             <x-th>From</x-th>
                             <x-th>To</x-th>
-                            <x-th>Sal. Credit</x-th>
-                            <x-th>COSSS</x-th>
-                            <x-th>MCR</x-th>
-                            <x-th>EC</x-th>
-                            <x-th>EMPSSS</x-th>
-                            <x-th>EMPMCR</x-th>
+                            <x-th>Sal. Base</x-th>
+                            <x-th>Personal</x-th>
+                            <x-th>Employer</x-th>
                             <x-th>Total</x-th>
                             <x-th>Edit</x-th>
                             <x-th>Delete</x-th>
                         </x-thead>
                         <x-tbody>
-                            @foreach($ssstables as $ssstable)
+                            @foreach($ph_tables as $phtable)
                                 <x-tr>
 
-                                    <x-td>{{$ssstable->bracket}}</x-td>
-                                    <x-td>{{$ssstable->rangel}}</x-td>
-                                    <x-td>{{$ssstable->rangeh}}</x-td>
-                                    <x-td>{{$ssstable->salcredit}}</x-td>
-                                    <x-td>{{$ssstable->cosss}}</x-td>
-                                    <x-td>{{$ssstable->comcr}}</x-td>
-                                    <x-td>{{$ssstable->coec}}</x-td>
-                                    <x-td>{{$ssstable->empsss}}</x-td>
-                                    <x-td>{{$ssstable->empmcr}}</x-td>
-                                    <x-td>{{$ssstable->totalcon}}</x-td>
+                                    <x-td>{{$phtable->phbracket}}</x-td>
+                                    <x-td>{{$phtable->phfrom}}</x-td>
+                                    <x-td>{{$phtable->phto}}</x-td>
+                                    <x-td>{{$phtable->sal_base}}</x-td>
+                                    <x-td>{{$phtable->personal}}</x-td>
+                                    <x-td>{{$phtable->employer}}</x-td>
+                                    <x-td>{{$phtable->total}}</x-td>
                                     <x-td>
-                                        <a href="{{route('ssstables.edit', [$ssstable->ssscode])}}">
+                                        <a href="{{route('phtables.edit', [$phtable->phiccode])}}">
                                             <i class="bi bi-pencil"></i>
                                         </a>
                                     </x-td>
                                     <x-td>
-                                        <a href="" data-bs-toggle="modal" data-bs-target="#destroy{{$ssstable->ssscode}}">
+                                        <a href="" data-bs-toggle="modal" data-bs-target="#destroy{{$phtable->phiccode}}">
                                             <i class="bi bi-trash"></i>
                                         </a>
 
-                                        <form action="{{route('ssstables.destroy', [$ssstable->ssscode])}}" method="POST">
+                                        <form action="{{route('phtables.destroy', [$phtable->phiccode])}}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <div class="modal fade" id="destroy{{$ssstable->ssscode}}">
+                                            <div class="modal fade" id="destroy{{$phtable->phiccode}}">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -95,8 +89,8 @@
 
 @section('datatable')
     @php
-        $title = "SSS Contributions";
-        $columns = "0,1,2,3,4,5,6,7,8,9";
+        $title = "PHIC Contributions";
+        $columns = "0,1,2,3,4,5,6";
         $target = null;
         $orientation = "portrait";
         $pageSize = "LEGAL";

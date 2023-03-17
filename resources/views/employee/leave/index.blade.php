@@ -28,11 +28,12 @@
                             </div>
                             <div class="col-4 my-2">
                                 <x-label>Employee</x-label>
-                                <x-select name="emp_ctrl">
+                                <x-input-text name="emp_ctrl"  list="employees"></x-input-text>
+                                <datalist id="employees">
                                     @foreach($employees as $employee)
-                                        <option value="{{$employee->emp_ctrl}}">{{$employee->emp_name}}</option>
+                                        <option value="{{$employee->emp_name}}"></option>
                                     @endforeach
-                                </x-select>
+                                </datalist>
                                 <x-validation name="emp_ctrl"></x-validation>
                             </div>
                             <div class="col-4 my-2">

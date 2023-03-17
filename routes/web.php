@@ -4,7 +4,9 @@ use App\Http\Controllers\DeductionController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeLeaveController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\PhTableController;
 use App\Http\Controllers\SectionController;
+use App\Http\Controllers\SpdateController;
 use App\Http\Controllers\SssTableController;
 use App\Http\Controllers\WageController;
 use Illuminate\Support\Facades\Route;
@@ -46,3 +48,9 @@ Route::resource('divisions', SectionController::class);
 Route::resource('wages', WageController::class);
 Route::resource('deductions', DeductionController::class);
 Route::resource('ssstables', SssTableController::class);
+Route::resource('phtables', PhTableController::class);
+Route::resource('spdates', SpdateController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
