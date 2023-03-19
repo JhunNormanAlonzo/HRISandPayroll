@@ -10,7 +10,7 @@ class Period extends Model
     use HasFactory;
 
     protected $table = "period";
-
+    public $primaryKey = 'per_uid';
     protected $guarded = [];
 
     public $timestamps = false;

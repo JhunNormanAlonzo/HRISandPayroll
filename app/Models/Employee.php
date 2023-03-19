@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Models\Scopes\EmployeeScope;
-use App\Models\Scopes\MyGlobalScope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -17,6 +16,9 @@ class Employee extends Model
     {
         static::addGlobalScope(new EmployeeScope());
     }
+
+
+    public $primaryKey = 'emp_uid';
 
     protected $guarded = [];
 

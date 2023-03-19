@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\EmployeeDetailsExport;
 use App\Imports\EmpNumberImport;
 use App\Imports\PLedgerImport;
 use App\Models\Employee;
 use App\Models\ImportEmpNum;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -98,5 +100,11 @@ class EmployeeController extends Controller
                 'emp_number' => $num_with_zero
             ]);
         }
+    }
+
+    public function exportEmployeeDetails(){
+        $date = Carbon::now()->format('Y-m-d');
+        $report_name = "employee_details_".$date.".xlsx";
+        return Excel::download(new EmployeeDetailsExport(), $report_name);
     }
 }

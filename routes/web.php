@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\DeductionController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmployeeLeaveController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\PeriodController;
 use App\Http\Controllers\PhTableController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\SpdateController;
@@ -27,19 +29,19 @@ Auth::routes();
 
 
 
-
+Route::get('/', function (){
+   return view('auth.login');
+});
 
 
 Route::get('/import_ledger', [\App\Http\Controllers\PLedgerController::class, 'index'])->name('p_ledger.index');
 Route::post('/import_ledger', [\App\Http\Controllers\PLedgerController::class, 'importData'])->name('p_ledger.import');
 
-Route::get('/employee_number', [\App\Http\Controllers\EmployeeController::class, 'employee_number_index'])->name('employee.number.index');
-Route::post('/employee_number', [\App\Http\Controllers\EmployeeController::class, 'updateEmpNumber'])->name('employee.number.import');
-Route::get('/tester', [\App\Http\Controllers\EmployeeController::class, 'manipulate_emp_number']);
+Route::get('/employee_number', [EmployeeController::class, 'employee_number_index'])->name('employee.number.index');
+Route::post('/employee_number', [EmployeeController::class, 'updateEmpNumber'])->name('employee.number.import');
+Route::get('/tester', [EmployeeController::class, 'manipulate_emp_number']);
 
-Route::get('/', function (){
-   return redirect()->route('employee_leaves.index');
-});
+Route::get('/export/employee-details', [EmployeeController::class, 'exportEmployeeDetails']);
 
 Route::resource('employee_leaves', EmployeeLeaveController::class);
 Route::resource('departments', DepartmentController::class);
@@ -50,6 +52,7 @@ Route::resource('deductions', DeductionController::class);
 Route::resource('ssstables', SssTableController::class);
 Route::resource('phtables', PhTableController::class);
 Route::resource('spdates', SpdateController::class);
+Route::resource('periods', PeriodController::class);
 
 Auth::routes();
 

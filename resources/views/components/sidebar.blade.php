@@ -275,6 +275,13 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="{{route('periods.index')}}">
+                        <i class="bi bi-circle"></i>
+                        <span>Payroll Period</span>
+                    </a>
+                </li>
+
             </ul>
         </li><!-- End Charts Nav -->
 

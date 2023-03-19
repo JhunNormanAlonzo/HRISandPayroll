@@ -15,4 +15,5 @@ class EmployeeScope implements Scope
     {
         $builder->where('emp_fired', false);
     }
+
 }
