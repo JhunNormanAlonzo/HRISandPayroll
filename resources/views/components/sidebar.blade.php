@@ -296,6 +296,12 @@
                         <span>Leave</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{route('loan_accounts.index')}}">
+                        <i class="bi bi-circle"></i>
+                        <span>Loan and Accounts</span>
+                    </a>
+                </li>
             </ul>
         </li><!-- End Charts Nav -->
 

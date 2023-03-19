@@ -2,7 +2,7 @@
 
 
 @section('page_title')
-    Location Module
+    Period Module
 @endsection
 
 @section('header')
@@ -17,22 +17,43 @@
             <x-alert></x-alert>
             <div class="card mt-3">
                 <div class="card-header">
-                    Update Location
+                    Create Period
                 </div>
                 <div class="card-body">
-                    <form action="{{route('locations.update', [$location->loc_code])}}" method="POST">
+                    <form action="{{route('periods.store')}}" method="POST">
                         @csrf
-                        @method('PUT')
                         <div class="row">
-                            <div class="col-4 my-2">
-                                <x-label>Location Description</x-label>
-                                <x-input-text name="location" value="{{$location->location}}"></x-input-text>
-                                <x-validation name="location"></x-validation>
+                            <livewire:period-from-and-to></livewire:period-from-and-to>
+
+                            <div class="col-6 my-2">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <x-input-check name="posted" value="1"></x-input-check>
+                                        <x-label>Posted</x-label>
+                                    </div>
+
+                                    <div class="col-3">
+                                        <x-input-check name="closed" value="1"></x-input-check>
+                                        <x-label>Closed</x-label>
+                                    </div>
+
+                                    <div class="col-3">
+                                        <x-input-check name="is30th" value="1"></x-input-check>
+                                        <x-label>30th</x-label>
+                                    </div>
+
+                                    <div class="col-3">
+                                        <x-input-check name="logpro" value="1"></x-input-check>
+                                        <x-label>LogPro</x-label>
+                                    </div>
+
+                                </div>
                             </div>
 
+
                             <div class="col-12 my-2">
-                                <x-btn>Update</x-btn>
-                                <a class="float-end" href="{{route('locations.index')}}">Back</a>
+                                <x-btn>Save</x-btn>
+                                <a class="float-end" href="{{route('periods.index')}}">Back</a>
                             </div>
                         </div>
                     </form>

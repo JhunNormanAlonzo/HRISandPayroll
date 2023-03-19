@@ -4,6 +4,7 @@ use App\Http\Controllers\DeductionController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmployeeLeaveController;
+use App\Http\Controllers\LoanAccountController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PeriodController;
 use App\Http\Controllers\PhTableController;
@@ -53,6 +54,7 @@ Route::resource('ssstables', SssTableController::class);
 Route::resource('phtables', PhTableController::class);
 Route::resource('spdates', SpdateController::class);
 Route::resource('periods', PeriodController::class);
+Route::resource('loan_accounts', LoanAccountController::class);
 
 Auth::routes();
 
