@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-12 my-2">
         <x-label>Amount Balance</x-label>
-        <x-input-number name="amount" wire:model="balance" wire:change="computeAmortization" wire:ignore></x-input-number>
+        <x-input-number name="amount" wire:model="balance"  wire:change="computeAmortization" wire:ignore></x-input-number>
         <x-validation name="amount"></x-validation>
     </div>
 

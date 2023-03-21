@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\LocationImport;
+use App\Imports\PLedgerImport;
 use App\Models\Location;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LocationController extends Controller
 {
@@ -82,5 +85,14 @@ class LocationController extends Controller
     {
         $location->delete();
         return redirect()->route('location.index')->with('message', 'Location Deleted Successfully!');
+    }
+
+    public function import_view(){
+        return view('location.import');
+    }
+
+    public function import(Request $request){
+        Excel::import(new LocationImport(), $request->file);
+        return redirect()->back()->with('message', 'Imported successfully!');
     }
 }

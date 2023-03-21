@@ -23,6 +23,7 @@
                 <div class="card-body">
                     <form action="{{route('loan_accounts.update', [$loan_account->la_uid])}}" method="POST">
                         @csrf
+                        @method('PUT')
                         <div class="row">
                             <div class="col-4 my-2">
                                 <x-label>Employee</x-label>
@@ -93,8 +94,46 @@
                                 <x-validation name="coll_period"></x-validation>
                             </div>
 
+
                             <div class="col-4 my-2">
-                                <livewire:loan-and-account-computer></livewire:loan-and-account-computer>
+                                <div class="row">
+                                    <div class="col-12 my-2">
+                                        <x-label>Amount Balance</x-label>
+                                        <x-input-number name="amount" id="amount" value="{{$loan_account->amount}}" ></x-input-number>
+                                        <x-validation name="amount"></x-validation>
+                                    </div>
+
+                                    <div class="col-12 my-2">
+                                        <x-label>Terms</x-label>
+                                        <x-input-number name="split" id="split" min="1" value="{{$loan_account->split}}" ></x-input-number>
+                                        <x-validation name="split"></x-validation>
+                                    </div>
+
+
+                                    <div class="col-12 my-2">
+                                        <x-label>Current Term</x-label>
+                                        <x-input-number name="split_val" value="{{$loan_account->split_val}}"></x-input-number>
+                                        <x-validation name="split_val"></x-validation>
+                                    </div>
+
+                                    <div class="col-12 my-2">
+                                        <x-label>Pay Amount</x-label>
+                                        <x-input-number name="pay_amt" id="amortization" value="{{$loan_account->pay_amt}}"></x-input-number>
+                                        <x-validation name="pay_amt"></x-validation>
+                                    </div>
+
+                                    <div class="col-12 my-2">
+                                        <x-label>Balance</x-label>
+                                        <x-input-number name="balance" id="balance" value="{{$loan_account->balance}}"></x-input-number>
+                                        <x-validation name="balance"></x-validation>
+                                    </div>
+
+                                    <div class="col-12 my-2">
+                                        <x-input-check name="isactive" check="{{$loan_account->isactive}}" value="1"></x-input-check>
+                                        <label class="text-sm text-muted">Is Active</label>
+                                    </div>
+
+                                </div>
                             </div>
 
 
@@ -102,7 +141,7 @@
 
                             <div class="col-12 my-2">
                                 <x-btn>Update</x-btn>
-                                <a class="float-end" href="{{route('locations.index')}}">Back</a>
+                                <a class="float-end" href="{{route('loan_accounts.index')}}">Back</a>
                             </div>
                         </div>
                     </form>
@@ -114,7 +153,43 @@
 
 
 @section('script')
+    <script>
+        // var balance = $("#balance").val();
+        // var split = $("#split").val();
+        var amortization;
+        var balance;
+        var split;
 
+
+        $("#amount").on('keyup', function(){
+            balance = $(this).val();
+            split = $("#split").val();
+            computeAmortization(balance, split)
+        });
+
+        $("#split").on('click', function(){
+            this.select();
+        });
+
+        $("#split").on('keyup', function(){
+            split = $(this).val();
+            if(split === ''){
+                split = 1;
+                $(this).val(split).delay(1000);
+            }
+            balance = $("#balance").val();
+            computeAmortization(balance, split)
+        });
+
+        function computeAmortization(balance, split){
+            amortization = balance / split;
+            $("#amortization").val(amortization);
+        }
+
+
+
+
+    </script>
 @endsection
 
 

@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire;
 
+
+use App\Models\LoanAccount;
 use Livewire\Component;
 
 class LoanAndAccountComputer extends Component
@@ -20,6 +22,9 @@ class LoanAndAccountComputer extends Component
         }
         $this->amortization = $this->balance / $this->split;
     }
+
+
+
 
     public function render()
     {

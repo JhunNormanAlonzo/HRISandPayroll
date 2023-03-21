@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Exports\EmployeeDetailsExport;
+use App\Imports\EmployeeImport;
 use App\Imports\EmpNumberImport;
+use App\Imports\LocationImport;
 use App\Imports\PLedgerImport;
 use App\Models\Employee;
 use App\Models\ImportEmpNum;
@@ -106,5 +108,16 @@ class EmployeeController extends Controller
         $date = Carbon::now()->format('Y-m-d');
         $report_name = "employee_details_".$date.".xlsx";
         return Excel::download(new EmployeeDetailsExport(), $report_name);
+    }
+
+
+
+    public function import_view(){
+        return view('employee.import');
+    }
+
+    public function import(Request $request){
+        Excel::import(new EmployeeImport(), $request->file);
+        return redirect()->back()->with('message', 'Imported successfully!');
     }
 }

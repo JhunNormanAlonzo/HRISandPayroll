@@ -44,6 +44,13 @@ Route::get('/tester', [EmployeeController::class, 'manipulate_emp_number']);
 
 Route::get('/export/employee-details', [EmployeeController::class, 'exportEmployeeDetails']);
 
+//import location
+Route::get('employee_import', [EmployeeController::class, 'import_view'])->name('employee.import_view');
+Route::post('employee_import', [EmployeeController::class, 'import'])->name('employee.import');
+Route::get('location_import', [LocationController::class, 'import_view'])->name('location.import_view');
+Route::post('location_import', [LocationController::class, 'import'])->name('location.import');
+
+
 Route::resource('employee_leaves', EmployeeLeaveController::class);
 Route::resource('departments', DepartmentController::class);
 Route::resource('locations', LocationController::class);
