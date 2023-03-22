@@ -7,6 +7,7 @@ use App\Models\Employee;
 use App\Models\Location;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
@@ -27,11 +28,12 @@ class EmployeeImport implements ToModel, WithHeadingRow
            'emp_no' => $row['emp_no'],
            'emp_dept' => Department::where('dept_desc', $row['emp_dept'])->pluck('emp_dept')->first(),
            'emp_name' => $row['emp_name'],
-           'emp_lname' => $row['emp_name'],
+           'emp_lname' => $row['emp_lname'],
            'emp_fname' => $row['emp_fname'],
            'emp_mi' => $row['emp_mi'],
            'emp_suffix' => $row['emp_suffix'],
            'emp_stat' => $row['emp_stat'],
+           'emp_ctrl' => "_".strtoupper(Str::random(9)),
            'emp_bacct' => $row['emp_bacct'],
            'emp_dayoff1' => $row['emp_dayoff1'] ?? 'NONE',
            'emp_dayoff2' => $row['emp_dayoff2'] ?? 'NONE',
@@ -67,6 +69,7 @@ class EmployeeImport implements ToModel, WithHeadingRow
            'emp_licno' => $row['emp_licno'],
            'emp_psrem' => $row['emp_psrem'],
            'emp_age' =>  Carbon::parse($row['emp_bdate'])->diffInYears(Carbon::now('Asia/Manila')),
+            'emp_fired' => '0',
         ]);
     }
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\DeductionController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmployeeLeaveController;
+use App\Http\Controllers\EmployeeLevelController;
 use App\Http\Controllers\LoanAccountController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PeriodController;
@@ -47,6 +48,10 @@ Route::get('/export/employee-details', [EmployeeController::class, 'exportEmploy
 //import location
 Route::get('employee_import', [EmployeeController::class, 'import_view'])->name('employee.import_view');
 Route::post('employee_import', [EmployeeController::class, 'import'])->name('employee.import');
+
+Route::get('employee_level_import', [EmployeeLevelController::class, 'import_view'])->name('employee_levels.import_view');
+Route::post('employee_level_import', [EmployeeLevelController::class, 'import'])->name('employee_levels.import');
+
 Route::get('location_import', [LocationController::class, 'import_view'])->name('location.import_view');
 Route::post('location_import', [LocationController::class, 'import'])->name('location.import');
 

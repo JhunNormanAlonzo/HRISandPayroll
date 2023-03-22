@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="{{route('employee.import')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('employee_levels.import')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="file" name="file">
         <button type="submit">Import</button>
