@@ -44,6 +44,7 @@ Route::post('/employee_number', [EmployeeController::class, 'updateEmpNumber'])-
 Route::get('/tester', [EmployeeController::class, 'manipulate_emp_number']);
 
 Route::get('/export/employee-details', [EmployeeController::class, 'exportEmployeeDetails']);
+Route::get('/export/employee-pledger-format', [EmployeeController::class, 'exportEmployeeLedgerFormat'])->name('export.ledger_format');
 
 //import location
 Route::get('employee_import', [EmployeeController::class, 'import_view'])->name('employee.import_view');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\EmployeeDetailsExport;
+use App\Exports\EmployeePledgerFormat;
 use App\Imports\EmployeeImport;
 use App\Imports\EmpNumberImport;
 use App\Imports\LocationImport;
@@ -110,6 +111,10 @@ class EmployeeController extends Controller
         return Excel::download(new EmployeeDetailsExport(), $report_name);
     }
 
+
+    public function exportEmployeeLedgerFormat(){
+        return Excel::download(new EmployeePledgerFormat(), Carbon::now('Asia/Manila')->format('Y-m-d H:i:s').'wd_format.xlsx');
+    }
 
 
     public function import_view(){

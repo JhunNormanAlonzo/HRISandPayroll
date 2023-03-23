@@ -307,13 +307,20 @@
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#import" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-filetype-csv"></i><span>Import</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-filetype-csv"></i><span>Import / Export</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="import" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="{{route('p_ledger.index')}}">
                         <i class="bi bi-circle"></i>
-                        <span>Deductions/Wages</span>
+                        <span>Import Deductions/Wages</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{route('export.ledger_format')}}">
+                        <i class="bi bi-circle"></i>
+                        <span>Export Deductions/Wages</span>
                     </a>
                 </li>
             </ul>

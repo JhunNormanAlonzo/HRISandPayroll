@@ -58,7 +58,7 @@
         @yield('main')
     </section>
 </main>
-
+<x-footer></x-footer>
 @auth
 {{--    <x-footer></x-footer>--}}
 @endif
