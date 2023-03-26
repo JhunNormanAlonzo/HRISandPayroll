@@ -28,10 +28,24 @@
                                 <x-validation name="file"></x-validation>
                             </div>
                             <div class="col-12">
-                                <x-btn >Save</x-btn>
+                                <x-btn id="import-button" >Save</x-btn>
                             </div>
                         </div>
                     </form>
+                    <div class="row mt-2">
+                        <div class="col-12">
+{{--                            display: none;--}}
+                            <div id="spinner"  class=" text-center rounded p-5" style="display: none; background: linear-gradient(to left, rgba(0,89,224,0.66), rgba(0,0,0,0.56)) " >
+
+                                <span class="spinner-border ml-5" role="status"></span>
+                                <h5 class="mx-5 text-white">
+                                Importing Madam...
+
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -39,3 +53,22 @@
 @endsection
 
 
+@section('script')
+    <script>
+        $(document).ready(function(){
+            $('#import-button').click(function(){
+                $('#spinner').show();
+                $.ajax({
+                    url: '/import_ledger',
+                    success: function(response){
+                        $('#spinner').hide();
+                    },
+                    error: function(response){
+                        $('#spinner').hide();
+                    }
+                });
+            });
+        });
+    </script>
+
+@endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Imports\PLedgerImport;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 use Maatwebsite\Excel\Facades\Excel;
 
 class PLedgerController extends Controller
@@ -68,9 +69,16 @@ class PLedgerController extends Controller
         $this->validate($request, [
             'file' => 'required'
         ]);
+        $file = $request->file;
+        $import = new PLedgerImport();
 
-        Excel::import(new PLedgerImport(), $request->file);
+        Excel::import($import, $file);
+
+
         return redirect()->back()->with('message', 'Imported successfully!');
 
     }
+
+
+
 }
