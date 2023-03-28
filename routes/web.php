@@ -9,6 +9,7 @@ use App\Http\Controllers\LoanAccountController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PeriodController;
 use App\Http\Controllers\PhTableController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\SpdateController;
 use App\Http\Controllers\SssTableController;
@@ -72,3 +73,7 @@ Route::resource('loan_accounts', LoanAccountController::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('/reports/employee',  [ReportController::class, 'employeeReport'])->name('employee.report');
+

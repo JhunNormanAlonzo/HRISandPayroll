@@ -10,12 +10,14 @@ use Carbon\Carbon;
 use Illuminate\Console\OutputStyle;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithProgressBar;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
 use Psy\Readline\Hoa\ConsoleOutput;
+
 use Symfony\Component\Console\Input\StringInput;
 
 class PLedgerImport implements ToModel, WithHeadingRow, WithChunkReading
@@ -99,10 +101,15 @@ class PLedgerImport implements ToModel, WithHeadingRow, WithChunkReading
             ->first();
         $pLedgers = array();
 
+        $loc_code = Employee::where('emp_ctrl', $row['emp_ctrl'])->pluck('loc_code')->first();
+
         foreach ($wd_ref as $wd_desc) {
 
             if (isset($row[strtolower(str_replace(' ', '_', $wd_desc))])){
                 $pLedgers[] = new PLedger([
+                    'loc_code' => $loc_code ?? " ",
+                    'reference' => strtoupper(Str::random(10)),
+                    'emp_dept' => isset($row['emp_dept']) ? $row['emp_dept'] : "00000",
                     'emp_ctrl' => isset($row['emp_ctrl']) ? $row['emp_ctrl'] : "00000",
                     'wd_id' => WDRef::where('wd_desc', $wd_desc)->pluck('wd_id')->first(),
                     'amount' => $row[strtolower(str_replace(' ', '_', $wd_desc))],

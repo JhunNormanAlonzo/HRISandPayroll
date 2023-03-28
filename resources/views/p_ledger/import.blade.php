@@ -37,7 +37,7 @@
 {{--                            display: none;--}}
                             <div id="spinner"  class=" text-center rounded p-5" style="display: none; background: linear-gradient(to left, rgba(0,89,224,0.66), rgba(0,0,0,0.56)) " >
 
-                                <span class="spinner-border ml-5" role="status"></span>
+                                <span class="spinner-border text-warning ml-5" role="status"></span>
                                 <h5 class="mx-5 text-white">
                                 Importing Madam...
 

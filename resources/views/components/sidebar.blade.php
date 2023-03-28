@@ -327,6 +327,29 @@
         </li><!-- End Charts Nav -->
 
 
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#reports" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-archive"></i><span>Reports</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="reports" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{route('p_ledger.index')}}">
+                        <i class="bi bi-circle"></i>
+                        <span>Import Deductions/Wages</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{route('export.ledger_format')}}">
+                        <i class="bi bi-circle"></i>
+                        <span>Export Deductions/Wages</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Charts Nav -->
+
+
+
     </ul>
 
 </aside><!-- End Sidebar-->
