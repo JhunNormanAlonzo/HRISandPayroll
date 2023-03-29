@@ -36,10 +36,12 @@
     <script src="{{asset('js/flatpicker.js')}}"></script>
     <script src="{{asset('js/datatable.js')}}"></script>
 
+
     <script src="{{asset('js/sweetalert.js')}}"></script>
     <script src="{{asset('typed.js/typed.js')}}"></script>
     <livewire:styles></livewire:styles>
     <script defer src="{{asset('js/alpine.js')}}"></script>
+
 </head>
 
 <body>

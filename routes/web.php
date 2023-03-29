@@ -76,4 +76,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::get('/reports/employee',  [ReportController::class, 'employeeReport'])->name('employee.report');
+Route::get('/reports/employee',  [ReportController::class, 'employeeReport'])->name('employee.report');
+
+Route::get('/reports/contribution', [ReportController::class, 'contributionView'])->name('contribution.view');
+Route::post('/reports/contribution', [ReportController::class, 'contributionPost'])->name('contribution.post');
 
