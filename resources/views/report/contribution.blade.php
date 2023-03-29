@@ -75,13 +75,7 @@
                         <div class="row">
                             <div class="col-4 my-2">
                                 <x-label>Employee </x-label>
-{{--                                <x-input-text name="employee" placeholder="leave blank if you want to select all"  list="employees"></x-input-text>--}}
-{{--                                <datalist id="employees">--}}
-{{--                                    @foreach($employees as $employee)--}}
-{{--                                        <option value="{{$employee->emp_name}}"></option>--}}
-{{--                                    @endforeach--}}
-{{--                                </datalist>--}}
-                                <x-datalist :data="$employees" name="employee" :column="'emp_name'"></x-datalist>
+                                <x-datalist :data="$employees" placeholder="please leave blank if you want so select all" name="employee" :column="'emp_name'"></x-datalist>
                                 <x-validation name="employee"></x-validation>
                             </div>
                             <div class="col-4 my-2">
