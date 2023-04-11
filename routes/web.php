@@ -5,6 +5,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmployeeLeaveController;
 use App\Http\Controllers\EmployeeLevelController;
+use App\Http\Controllers\LedgerDeductionController;
 use App\Http\Controllers\LoanAccountController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PeriodController;
@@ -69,6 +70,7 @@ Route::resource('phtables', PhTableController::class);
 Route::resource('spdates', SpdateController::class);
 Route::resource('periods', PeriodController::class);
 Route::resource('loan_accounts', LoanAccountController::class);
+Route::resource('ledger_deductions', LedgerDeductionController::class);
 
 Auth::routes();
 
@@ -80,4 +82,5 @@ Route::get('/reports/employee',  [ReportController::class, 'employeeReport'])->n
 
 Route::get('/reports/contribution', [ReportController::class, 'contributionView'])->name('contribution.view');
 Route::post('/reports/contribution', [ReportController::class, 'contributionPost'])->name('contribution.post');
+Route::get('/reports/payrollSummary', [ReportController::class, 'payrollSummary'])->name('payroll.summary');
 

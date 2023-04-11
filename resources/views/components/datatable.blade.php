@@ -6,6 +6,13 @@
                 fixedColumns: true,
                 buttons: [
                     {
+                        extend: 'csv',
+                        title: "{{ $title }}",
+                        text: '<i class="bi bi-file-excel"></i>',
+                        className: 'btn btn-success mb-3',
+                        download: 'download',
+                    },
+                    {
                         extend: 'pdf',
                         title: "{{ $title }}",
                         text: '<i class="bi bi-filetype-pdf"></i>',

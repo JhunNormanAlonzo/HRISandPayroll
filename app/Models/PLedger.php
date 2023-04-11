@@ -14,4 +14,8 @@ class PLedger extends Model
     protected $guarded = [];
 
     public $timestamps = false;
+
+    public function employee(){
+        return $this->belongsTo(Employee::class, 'emp_ctrl', 'emp_ctrl');
+    }
 }

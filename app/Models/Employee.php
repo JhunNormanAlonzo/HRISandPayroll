@@ -25,4 +25,9 @@ class Employee extends Model
     public $timestamps = false;
 
 
+    public function p_ledgers(){
+        return $this->hasMany(PLedger::class, 'emp_ctrl', 'emp_ctrl');
+    }
+
+
 }

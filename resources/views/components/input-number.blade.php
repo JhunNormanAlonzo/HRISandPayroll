@@ -5,4 +5,4 @@
     "form-control form-control-sm ";
 @endphp
 
-<input type="number" {{$attributes->merge(['class' => $class])}}  value="{{old($name) ? old($name) : ''}}">
+<input type="number" {{$attributes->merge(['class' => $class])}}  step=".01" value="{{old($name) ? old($name) : ''}}">
