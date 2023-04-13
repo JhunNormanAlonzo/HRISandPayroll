@@ -6,6 +6,8 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmployeeLeaveController;
 use App\Http\Controllers\EmployeeLevelController;
 use App\Http\Controllers\LedgerDeductionController;
+use App\Http\Controllers\LedgerWageController;
+use App\Http\Controllers\LedgerWDController;
 use App\Http\Controllers\LoanAccountController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PeriodController;
@@ -71,6 +73,12 @@ Route::resource('spdates', SpdateController::class);
 Route::resource('periods', PeriodController::class);
 Route::resource('loan_accounts', LoanAccountController::class);
 Route::resource('ledger_deductions', LedgerDeductionController::class);
+Route::resource('ledger_wages', LedgerWageController::class);
+
+//Route::post('ledger_wds.search', [LedgerWDController::class, 'search'])->name('ledger_wds.search');
+Route::post('ledger_wds.show_search', [LedgerWDController::class, 'search'])->name('ledger_wds.show_search');
+
+Route::resource('ledger_wds', LedgerWDController::class);
 
 Auth::routes();
 

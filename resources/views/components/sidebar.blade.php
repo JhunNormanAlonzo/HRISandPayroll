@@ -312,9 +312,23 @@
             </a>
             <ul id="processes" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="{{route('p_ledger.index')}}">
+                    <a href="{{route('ledger_deductions.create')}}">
                         <i class="bi bi-circle"></i>
                         <span>Manual Deduction</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{route('ledger_wages.create')}}">
+                        <i class="bi bi-circle"></i>
+                        <span>Manual Wage</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{route('ledger_wds.index')}}">
+                        <i class="bi bi-circle"></i>
+                        <span>Wage Deduction Fetcher</span>
                     </a>
                 </li>
 
